@@ -1,0 +1,216 @@
+{
+  "name": "SPQR",
+  "displayName": "SPQR",
+  "description": "VSCode extension of the RoboCup SPL SPQR Team",
+  "icon": "media/SPQRlogo.png",
+  "version": "0.0.6",
+  "publisher": "SPQR",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:SPQR.compile",
+    "onCommand:SPQR.deploy",
+    "onCommand:SPQR.controlPanel",
+    "onCommand:SPQR:wikiPanel",
+    "onCommand:SPQR.SimRobot",
+    "onCommand:SPQR.Fast_BH",
+    "onCommand:SPQR.Fast_1vs1",
+    "onCommand:SPQR.Fast_1vsDummy",
+    "onCommand:SPQR.Fast_7vs7",
+    "onCommand:SPQR.Fast_7vsDummies",
+    "onCommand:SPQR.Normal_BH",
+    "onCommand:SPQR.Normal_1vs1",
+    "onCommand:SPQR.Normal_1vsDummy",
+    "onCommand:SPQR.Normal_7vs7",
+    "onCommand:SPQR.Normal_7vsDummies",
+    "onCommand:SPQR.PerceptOracle_BH",
+    "onCommand:SPQR.PerceptOracle_1vs1",
+    "onCommand:SPQR.PerceptOracle_1vsDummy",
+    "onCommand:SPQR.PerceptOracle_7vs7",
+    "onCommand:SPQR.PerceptOracle_7vsDummies",
+    "onCommand:SPQR.2D_BH",
+    "onCommand:SPQR.2D_7vs7",
+    "onCommand:SPQR.Special_KickViewScene",
+    "onCommand:SPQR.Special_KickViewSceneRemote",
+    "onCommand:SPQR.Special_RemoteRobot",
+    "onCommand:SPQR.Special_ReplayRobot"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "SPQR.compile",
+        "title": "Compile SPQR Code"
+      },
+      {
+        "command": "SPQR.deploy",
+        "title": "Deploy SPQR Code"
+      },
+      {
+        "command": "SPQR.deploy.robot1",
+        "title": "Deploy SPQR Code on Robot 1"
+      },
+      {
+        "command": "SPQR.deploy.robot2",
+        "title": "Deploy SPQR Code on Robot 2"
+      },
+      {
+        "command": "SPQR.deploy.robot3",
+        "title": "Deploy SPQR Code on Robot 3"
+      },
+      {
+        "command": "SPQR.deploy.4",
+        "title": "Deploy SPQR Code on Robot 4"
+      },
+      {
+        "command": "SPQR.deploy.robot5",
+        "title": "Deploy SPQR Code on Robot 5"
+      },
+      {
+        "command": "SPQR.deploy.robot6",
+        "title": "Deploy SPQR Code on Robot 6"
+      },
+      {
+        "command": "SPQR.deploy.robot7",
+        "title": "Deploy SPQR Code on Robot 7"
+      },
+      {
+        "command": "SPQR.deploy.robot8",
+        "title": "Deploy SPQR Code on Robot 8"
+      },
+      {
+        "command": "SPQR.controlPanel",
+        "title": "Open SPQR Control Panel"
+      },
+      {
+        "command": "SPQR.wikiPanel",
+        "title": "Open SPQR Wiki Panel"
+      },
+      {
+        "command": "SPQR.SimRobot",
+        "title": "Run SimRobot"
+      },
+      {
+        "command": "SPQR.Fast_BH",
+        "title": "Fast BH Scene"
+      },
+      {
+        "command": "SPQR.Fast_1vs1",
+        "title": "Fast 1vs1 Scene"
+      },
+      {
+        "command": "SPQR.Fast_1vsDummy",
+        "title": "Fast 1vsDummy Scene"
+      },
+      {
+        "command": "SPQR.Fast_7vs7",
+        "title": "Fast 7vs7 Scene"
+      },
+      {
+        "command": "SPQR.Fast_7vsDummies",
+        "title": "Fast 7vsDummies Scene"
+      },
+      {
+        "command": "SPQR.Normal_BH",
+        "title": "Normal BH Scene"
+      },
+      {
+        "command": "SPQR.Normal_1vs1",
+        "title": "Normal 1vs1 Scene"
+      },
+      {
+        "command": "SPQR.Normal_1vsDummy",
+        "title": "Normal 1vsDummy Scene"
+      },
+      {
+        "command": "SPQR.Normal_7vs7",
+        "title": "Normal 7vs7 Scene"
+      },
+      {
+        "command": "SPQR.Normal_7vsDummies",
+        "title": "Normal 7vsDummies Scene"
+      },
+      {
+        "command": "SPQR.PerceptOracle_BH",
+        "title": "PerceptOracle BH Scene"
+      },
+      {
+        "command": "SPQR.PerceptOracle_1vs1",
+        "title": "PerceptOracle 1vs1 Scene"
+      },
+      {
+        "command": "SPQR.PerceptOracle_1vsDummy",
+        "title": "PerceptOracle 1vsDummy Scene"
+      },
+      {
+        "command": "SPQR.PerceptOracle_7vs7",
+        "title": "PerceptOracle 7vs7 Scene"
+      },
+      {
+        "command": "SPQR.PerceptOracle_7vsDummies",
+        "title": "PerceptOracle 7vsDummies Scene"
+      },
+      {
+        "command": "SPQR.2D_BH",
+        "title": "2D BH Scene"
+      },
+      {
+        "command": "SPQR.2D_7vs7",
+        "title": "2D 7vs7 Scene"
+      },
+      {
+        "command": "SPQR.Special_KickViewScene",
+        "title": "Special KickView Scene"
+      },
+      {
+        "command": "SPQR.Special_KickViewSceneRemote",
+        "title": "Special KickView Scene Remote"
+      },
+      {
+        "command": "SPQR.Special_RemoteRobot",
+        "title": "Special Remote Robot"
+      },
+      {
+        "command": "SPQR.Special_ReplayRobot",
+        "title": "Special Replay Robot"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "SPQRContainer",
+          "title": "SPQR",
+          "icon": "media/ball.png"
+        }
+      ]
+    },
+    "views": {
+      "SPQRContainer": [
+        {
+          "id": "SPQRView",
+          "name": "SPQR"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "SPQR Extension Settings",
+      "properties": {
+        "SPQR.repositoryPath": {
+          "type": "string",
+          "default": "",
+          "description": "The path to the SPQR repository."
+        },
+        "SPQR.SimRobotScene": {
+          "type": "string",
+          "default": "",
+          "description": "The scene file path for SimRobot."
+        }
+      }
+    }
+  }
+}

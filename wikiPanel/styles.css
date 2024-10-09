@@ -1,0 +1,139 @@
+.styled-input {
+    border-radius: 5px; /* Rounded borders */
+    background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent gray background */
+    border: 1px solid #ccc; /* Light gray border */
+    padding: 3px; /* Padding inside the input */
+    padding-left: 6px; /* Padding inside the input */
+    padding-right: 6px; /* Padding inside the input */
+    font-size: 14px; /* Font size */
+    color: white;
+    width: 100%; /* Full width */
+    max-width: 400px; /* Maximum width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.styled-button {
+    background-color: rgba(128, 128, 128, 0.5); /* Green background */
+    color: white; /* White text color */
+    border: 1px solid #ccc; /* Green border */
+    border-radius: 5px; /* Rounded borders */
+    padding: 3px 10px; /* Padding */
+    cursor: pointer; /* Pointer/hand cursor */
+    font-size: 12px; /* Font size */
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.table-row-header {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: medium;
+    text-align: center;
+}
+
+.table-column-header {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: medium;
+    text-align: center;
+}
+
+.table-row {
+    border-collapse: collapse;
+    padding: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: medium;
+    text-align: left;
+}
+
+.table-column {
+    border-collapse: collapse;
+    padding: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: medium;
+    text-align: left;
+}
+
+/* CSS for the switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(128, 128, 128, 0.5);
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 6px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* CSS selector */
+.selector {
+    border-radius: 5px; /* Rounded borders */
+    background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent gray background */
+    border: 1px solid #ccc; /* Light gray border */
+    padding: 3px; /* Padding inside the input */
+    padding-left: 6px; /* Padding inside the input */
+    padding-right: 6px; /* Padding inside the input */
+    font-size: 14px; /* Font size */
+    color: white;
+    width: 100%; /* Full width */
+    max-width: 400px; /* Maximum width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin-left: 10px;
+}
+
+.selector:focus {
+    background-color: rgba(128, 128, 128, 1); /* Ensure background color remains consistent */
+    outline: none; /* Remove default focus outline */
+}

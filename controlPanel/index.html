@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPQR Control Panel</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+  <div>
+    <img src="http://www.diag.uniroma1.it/~spqr/images/logo-spqr-robot-soccer-team.png" alt="SPQR Logo" style="height: 120px;">
+    <h1 style="font-size: 40px; margin-left: 15px">SPQR Control Panel</h1>
+  </div>
+
+  <hr style="height: 5px; background-color: #333; border: none;">
+
+  <h2>Repository Path</h2>
+  <hr style="height: 2px; background-color: #333; border: none;">
+  <p style="font-size: medium;">Enter the path to the SPQR repository.</p>
+
+  <p style="font-size: medium;">
+    <strong>- Current repository path:</strong> 
+    <span id="currentRepositoryPath">Not set</span>
+  </p>
+
+  <form id="repositoryForm">
+    <strong><label style="font-size: medium;" for="repositoryPath">- Update repository path:</label></strong>
+    <input type="text" id="repositoryPath" name="repositoryPath" class="styled-input" placeholder="/path/to/repository">
+    <button style="font-size: medium;" type="submit" class="styled-button">Save</button>
+  </form>
+
+  <br>
+  <hr style="height: 5px; background-color: #333; border: none;">
+
+  <h2>Deploy Settings</h2>
+  <hr style="height: 2px; background-color: #333; border: none;">
+
+  <br>
+
+  <table>
+    <tr class="table-row-header">
+      <td class="table-column-header">
+        <strong>Deploy Arguments</strong>          
+      </td>
+      <td class="table-column-header">
+        <strong>Robots</strong>
+      </td>
+    </tr>
+
+    <tr class="table-row-header">
+      <td class="table-column-header">
+
+        <table>
+          <!--Mode-->
+          <tr class="table-row"></tr>
+            <td class="table-column">
+              <strong><label for="mode">Mode:</label></strong>
+            </td>
+            <td class="table-column">
+              <select id="modeMenu" name="mode" class="selector">
+                <option value="Develop" selected>Develop</option>
+                <option value="Debug">Debug</option>
+                <option value="Release">Release</option>
+              </select>
+            </td>
+          </tr>
+      
+          <!--Network-->
+          <tr class="table-row">
+            <td class="table-column">
+              <strong><label for="network">Network:</label></strong>
+            </td>
+            <td class="table-column">
+              <select id="networkMenu" name="network" class="selector">
+                <option value="WiFi" selected>WiFi</option>
+                <option value="Ethernet">Ethernet</option>
+              </select>
+            </td>
+          </tr>
+        
+          <!--Color-->
+          <tr class="table-row">
+            <td class="table-column">
+              <strong><label for="color">Choose a color:</label></strong>
+            </td>
+            <td class="table-column">
+              <select id="colorMenu" name="color" class="selector">
+                <option value="red" selected>red</option>
+                <option value="blue">blue</option>
+                <option value="yellow">yellow</option>
+                <option value="black">black</option>
+                <option value="whitw">white</option>
+                <option value="orange">orange</option>
+                <option value="purple">purple</option>
+                <option value="brown">brown</option>
+                <option value="gray">gray</option>
+              </select>
+            </td>
+          </tr>
+      
+          <!--Volume-->
+          <tr class="table-row">
+            <td class="table-column">
+              <strong><label for="volume">Volume:</label></strong>
+            </td>
+            <td class="table-column">
+              <select id="volumeMenu" name="volume" class="selector">
+                <option value="0" selected>0</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50" selected>50</option>
+                <option value="60">60</option>
+                <option value="70">70</option>
+                <option value="80">80</option>
+                <option value="90">90</option>
+                <option value="100">100</option>
+              </select>
+            </td>
+          </tr>
+      
+          <!--Restart B-Human-->
+          <tr class="table-row">
+            <td class="table-column">
+              <strong>Restart B-Human:</strong>
+            </td>
+            <td class="table-column">
+              <label class="switch">
+                <input type="checkbox" id="restartBHumanSwitch">
+                <span class="slider round"></span>
+              </label>
+            </td>
+          </tr>
+      
+          <!--Delete logs-->
+          <tr class="table-row">
+            <td class="table-column">
+              <strong>Delete logs:</strong>
+            </td>
+            <td class="table-column">
+              <label class="switch">
+                <input type="checkbox" id="deleteLogsSwitch">
+                <span class="slider round"></span>
+              </label>
+            </td>
+          </tr>
+      
+        </table>
+      </td>
+
+      <td class="table-column-header">
+
+        <table>
+          <tr class="table-row">
+            <td class="table-column">
+              <strong>Robot 1:</strong>
+            </td>
+            <td class="table-column">
+              <select id="robot1Menu" name="robot1" class="selector">
+                <option value="00-None">00-None</option>
+                <option value="22-Ethan">22-Ethan</option>
+                <option value="23-Erika">23-Erika</option>
+                <option value="24-Adriano" selected>24-Adriano</option>
+                <option value="25-Commodo">25-Commodo</option>
+                <option value="26-Domiziano">26-Domiziano</option>
+                <option value="27-MarcoAurelio">27-MarcoAurelio</option>
+                <option value="28-Tito">28-Tito</option>
+                <option value="29-Traiano">29-Traiano</option>
+                <option value="30-Vespasiano">30-Vespasiano</option>
+                <option value="31-Int">31-Int</option>
+              </select>
+          </tr>
+
+          <tr class="table-row">
+            <td class="table-column">
+              <strong>Robot 2:</strong>
+            </td>
+            <td class="table-column">
+              <select id="robot2Menu" name="robot2" class="selector">
+                <option value="00-None">00-None</option>
+                <option value="22-Ethan">22-Ethan</option>
+                <option value="23-Erika">23-Erika</option>
+                <option value="24-Adriano">24-Adriano</option>
+                <option value="25-Commodo" selected>25-Commodo</option>
+                <option value="26-Domiziano">26-Domiziano</option>
+                <option value="27-MarcoAurelio">27-MarcoAurelio</option>
+                <option value="28-Tito">28-Tito</option>
+                <option value="29-Traiano">29-Traiano</option>
+                <option value="30-Vespasiano">30-Vespasiano</option>
+                <option value="31-Int">31-Int</option>
+              </select>
+          </tr>
+
+          <tr class="table-row">
+            <td class="table-column">
+              <strong>Robot 3:</strong>
+            </td>
+            <td class="table-column">
+              <select id="robot3Menu" name="robot3" class="selector">
+                <option value="00-None">00-None</option>
+                <option value="22-Ethan">22-Ethan</option>
+                <option value="23-Erika">23-Erika</option>
+                <option value="24-Adriano">24-Adriano</option>
+                <option value="25-Commodo">25-Commodo</option>
+                <option value="26-Domiziano" selected>26-Domiziano</option>
+                <option value="27-MarcoAurelio">27-MarcoAurelio</option>
+                <option value="28-Tito">28-Tito</option>
+                <option value="29-Traiano">29-Traiano</option>
+                <option value="30-Vespasiano">30-Vespasiano</option>
+                <option value="31-Int">31-Int</option>
+              </select>
+          </tr>
+
+          <tr class="table-row">
+            <td class="table-column">
+              <strong>Robot 4:</strong>
+            </td>
+            <td class="table-column">
+              <select id="robot4Menu" name="robot4" class="selector">
+                <option value="00-None">00-None</option>
+                <option value="22-Ethan">22-Ethan</option>
+                <option value="23-Erika">23-Erika</option>
+                <option value="24-Adriano">24-Adriano</option>
+                <option value="25-Commodo">25-Commodo</option>
+                <option value="26-Domiziano">26-Domiziano</option>
+                <option value="27-MarcoAurelio" selected>27-MarcoAurelio</option>
+                <option value="28-Tito">28-Tito</option>
+                <option value="29-Traiano">29-Traiano</option>
+                <option value="30-Vespasiano">30-Vespasiano</option>
+                <option value="31-Int">31-Int</option>
+              </select>
+          </tr>
+
+          <tr class="table-row">
+            <td class="table-column">
+              <strong>Robot 5:</strong>
+            </td>
+            <td class="table-column">
+              <select id="robot5Menu" name="robot5" class="selector">
+                <option value="00-None">00-None</option>
+                <option value="22-Ethan">22-Ethan</option>
+                <option value="23-Erika">23-Erika</option>
+                <option value="24-Adriano">24-Adriano</option>
+                <option value="25-Commodo">25-Commodo</option>
+                <option value="26-Domiziano">26-Domiziano</option>
+                <option value="27-MarcoAurelio">27-MarcoAurelio</option>
+                <option value="28-Tito" selected>28-Tito</option>
+                <option value="29-Traiano">29-Traiano</option>
+                <option value="30-Vespasiano">30-Vespasiano</option>
+                <option value="31-Int">31-Int</option>
+              </select>
+          </tr>
+
+          <tr class="table-row">
+            <td class="table-column">
+              <strong>Robot 6:</strong>
+            </td>
+            <td class="table-column">
+              <select id="robot6Menu" name="robot6" class="selector">
+                <option value="00-None">00-None</option>
+                <option value="22-Ethan">22-Ethan</option>
+                <option value="23-Erika">23-Erika</option>
+                <option value="24-Adriano">24-Adriano</option>
+                <option value="25-Commodo">25-Commodo</option>
+                <option value="26-Domiziano">26-Domiziano</option>
+                <option value="27-MarcoAurelio">27-MarcoAurelio</option>
+                <option value="28-Tito">28-Tito</option>
+                <option value="29-Traiano" selected>29-Traiano</option>
+                <option value="30-Vespasiano">30-Vespasiano</option>
+                <option value="31-Int">31-Int</option>
+              </select>
+          </tr>
+
+          <tr class="table-row">
+            <td class="table-column">
+              <strong>Robot 7:</strong>
+            </td>
+            <td class="table-column">
+              <select id="robot7Menu" name="robot7" class="selector">
+                <option value="00-None">00-None</option>
+                <option value="22-Ethan">22-Ethan</option>
+                <option value="23-Erika">23-Erika</option>
+                <option value="24-Adriano">24-Adriano</option>
+                <option value="25-Commodo">25-Commodo</option>
+                <option value="26-Domiziano">26-Domiziano</option>
+                <option value="27-MarcoAurelio">27-MarcoAurelio</option>
+                <option value="28-Tito">28-Tito</option>
+                <option value="29-Traiano">29-Traiano</option>
+                <option value="30-Vespasiano" selected>30-Vespasiano</option>
+                <option value="31-Int">31-Int</option>
+              </select>
+          </tr>
+
+          <tr class="table-row">
+            <td class="table-column">
+              <strong>Robot 8:</strong>
+            </td>
+            <td class="table-column">
+              <select id="robot8Menu" name="robot8" class="selector">
+                <option value="00-None">00-None</option>
+                <option value="22-Ethan">22-Ethan</option>
+                <option value="23-Erika">23-Erika</option>
+                <option value="24-Adriano">24-Adriano</option>
+                <option value="25-Commodo">25-Commodo</option>
+                <option value="26-Domiziano">26-Domiziano</option>
+                <option value="27-MarcoAurelio">27-MarcoAurelio</option>
+                <option value="28-Tito">28-Tito</option>
+                <option value="29-Traiano">29-Traiano</option>
+                <option value="30-Vespasiano">30-Vespasiano</option>
+                <option value="31-Int" selected>31-Int</option>
+              </select>
+          </tr>
+        </table>
+      </td>
+  </table>
+
+  <br>
+  <hr style="height: 5px; background-color: #333; border: none;">
+
+</body>
+</html>
