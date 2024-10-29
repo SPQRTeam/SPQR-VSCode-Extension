@@ -3,7 +3,7 @@
   "displayName": "SPQR",
   "description": "VSCode extension of the RoboCup SPL SPQR Team",
   "icon": "media/SPQRlogo.png",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publisher": "SPQR",
   "engines": {
     "vscode": "^1.93.0"
@@ -14,6 +14,7 @@
   "activationEvents": [
     "onCommand:SPQR.compile",
     "onCommand:SPQR.deploy",
+    "onCommand:SPQR.setprofile",
     "onCommand:SPQR.controlPanel",
     "onCommand:SPQR:wikiPanel",
     "onCommand:SPQR.SimRobot",
@@ -81,6 +82,38 @@
       {
         "command": "SPQR.deploy.robot8",
         "title": "Deploy SPQR Code on Robot 8"
+      },
+      {
+        "command": "SPQR.setprofile.robot1",
+        "title": "Set Profile for Robot 1"
+      },
+      {
+        "command": "SPQR.setprofile.robot2",
+        "title": "Set Profile for Robot 2"
+      },
+      {
+        "command": "SPQR.setprofile.robot3",
+        "title": "Set Profile for Robot 3"
+      },
+      {
+        "command": "SPQR.setprofile.robot4",
+        "title": "Set Profile for Robot 4"
+      },
+      {
+        "command": "SPQR.setprofile.robot5",
+        "title": "Set Profile for Robot 5"
+      },
+      {
+        "command": "SPQR.setprofile.robot6",
+        "title": "Set Profile for Robot 6"
+      },
+      {
+        "command": "SPQR.setprofile.robot7",
+        "title": "Set Profile for Robot 7"
+      },
+      {
+        "command": "SPQR.setprofile.robot8",
+        "title": "Set Profile for Robot 8"
       },
       {
         "command": "SPQR.controlPanel",

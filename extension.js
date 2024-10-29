@@ -74,7 +74,14 @@ function activate(context) {
 
   //* Register Deploy Commands
   registerDeployCommands(context);
+  
+  //* Setprofile Command
+  const setprofileCommand = vscode.commands.registerCommand('SPQR.setprofile', async function () { setprofile(); });
+  context.subscriptions.push(setprofileCommand);
 
+  //* Register Setprofile Commands
+  registerSetprofileCommands(context);
+  
   //* Run SimRobot Command
   const SimRobotCommand = vscode.commands.registerCommand('SPQR.SimRobot', async function () { SimRobot(); });
   context.subscriptions.push(SimRobotCommand);
@@ -454,6 +461,36 @@ function deploy(number=null) {
   }
 }
 
+function setprofile(number=null) {
+  let repositoryPath = getRepositoryPath();
+  if (!repositoryPath) return;
+  ensureTerminal();
+  terminal.sendText(`cd ${repositoryPath} && source SPQRTools/spqr`);
+  terminal.show();
+  
+  if (!number) {
+    vscode.window.showInformationMessage('Set profile ...');
+    let ipList = [];
+    for (let i = 1; i <= 8; i++) {
+      let robot = robotFormation[`robot${i}`];
+      if (ipList.includes(robot.ip)) {
+        vscode.window.showErrorMessage(`There are two robots with the same ip: ${robot.ip}`);
+        return;
+      }
+      ipList.push(robot.ip);
+    }
+    terminal.sendText(`spqr setprofile -f`);
+    return;
+  }
+  else{
+    let robot = robotFormation[`robot${number}`];
+    let ip = deploySettings.network === 'Ethernet' ? '192.168.19.'+robot.ip : '10.0.19.'+robot.ip;
+    let setprofileCommand = `ssh nao@${ip} 'setprofile ${deploySettings.setprofile}'`;
+    vscode.window.showInformationMessage(`Set profile on robot ${robot.number} - ${robot.command} with profile ${deploySettings.setprofile}`);
+    terminal.sendText(setprofileCommand);
+  }
+}
+
 function SimRobot(type=null, scene=null) {
   let repositoryPath = getRepositoryPath();
   if (!repositoryPath) return;
@@ -525,6 +562,29 @@ function registerDeployCommands(context) {
   }
 }
 
+//* Setprofile
+function getSetprofileMenu() {
+  return [
+    { label: 'Set Profile', command: 'SPQR.setprofile', icon: 'globe' },
+    { label: `robot 1 - ${robotFormation.robot1.command}`, command: 'SPQR.setprofile.robot1', icon: 'arrow-small-right' },
+    { label: `robot 2 - ${robotFormation.robot2.command}`, command: 'SPQR.setprofile.robot2', icon: 'arrow-small-right' },
+    { label: `robot 3 - ${robotFormation.robot3.command}`, command: 'SPQR.setprofile.robot3', icon: 'arrow-small-right' },
+    { label: `robot 4 - ${robotFormation.robot4.command}`, command: 'SPQR.setprofile.robot4', icon: 'arrow-small-right' },
+    { label: `robot 5 - ${robotFormation.robot5.command}`, command: 'SPQR.setprofile.robot5', icon: 'arrow-small-right' },
+    { label: `robot 6 - ${robotFormation.robot6.command}`, command: 'SPQR.setprofile.robot6', icon: 'arrow-small-right' },
+    { label: `robot 7 - ${robotFormation.robot7.command}`, command: 'SPQR.setprofile.robot7', icon: 'arrow-small-right' },
+    { label: `robot 8 - ${robotFormation.robot8.command}`, command: 'SPQR.setprofile.robot8', icon: 'arrow-small-right' },
+  ];
+}
+
+function registerSetprofileCommands(context) {
+  for (let i = 1; i <= 8; i++) {
+    const commandName = `SPQR.setprofile.robot${i}`;
+    const command = vscode.commands.registerCommand(commandName, () => setprofile(i));
+    context.subscriptions.push(command);
+  }
+}
+
 //* Tree View sidebar
 class CommandProvider {
   constructor() {
@@ -566,6 +626,7 @@ class CommandProvider {
       { label: 'Clear Terminal', command: 'SPQR.clearTerminal', icon: 'clear-all' },
       { label: 'Compile', command: 'SPQR.compile', icon: 'tools' },
       { label: 'Deploy', submenu: getDeployMenu()},
+      { label: 'Set Profile', submenu: getSetprofileMenu()},
       { label: 'SimRobot', submenu: getSimRobotMenu()}
     ]);
   }
