@@ -3,7 +3,7 @@
   "displayName": "SPQR",
   "description": "VSCode extension of the RoboCup SPL SPQR Team",
   "icon": "media/SPQRlogo.png",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "publisher": "SPQR",
   "repository": {
     "type": "git",
