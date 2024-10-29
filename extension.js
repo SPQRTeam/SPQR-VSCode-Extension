@@ -100,6 +100,7 @@ function openControlPanel(context) {
   panel.webview.html = getWebviewContent('controlPanel');
 
   panel.webview.onDidReceiveMessage(async message => {  
+    outputChannel.appendLine(`Received message: ${message.command}`);
     switch (message.command) {
       case 'savePath':
         await config.update('repositoryPath', message.repositoryPath, vscode.ConfigurationTarget.Global);
@@ -162,6 +163,7 @@ function openControlPanel(context) {
         break;
 
       case 'robot1':
+        outputChannel.appendLine(`Setting robot 1 - ${message.robot1}`);
         setRobotFormation(1, message.robot1);
         vscode.window.showInformationMessage('Robot 1: ' + message.robot1);
         break;
@@ -177,28 +179,28 @@ function openControlPanel(context) {
         break;
 
       case 'robot4':  
-        setRobotFormation(4, message.robot3);
-        vscode.window.showInformationMessage('Robot 4: ' + message.robot3);
+        setRobotFormation(4, message.robot4);
+        vscode.window.showInformationMessage('Robot 4: ' + message.robot4);
         break;
       
         case 'robot5':  
-        setRobotFormation(5, message.robot3);
-        vscode.window.showInformationMessage('Robot 5: ' + message.robot3);
+        setRobotFormation(5, message.robot5);
+        vscode.window.showInformationMessage('Robot 5: ' + message.robot5);
         break;
 
       case 'robot6':  
-        setRobotFormation(6, message.robot3);
-        vscode.window.showInformationMessage('Robot 6: ' + message.robot3);
+        setRobotFormation(6, message.robot6);
+        vscode.window.showInformationMessage('Robot 6: ' + message.robot6);
         break;
 
       case 'robot7':  
-        setRobotFormation(7, message.robot3);
-        vscode.window.showInformationMessage('Robot 7: ' + message.robot3);
+        setRobotFormation(7, message.robot7);
+        vscode.window.showInformationMessage('Robot 7: ' + message.robot7);
         break;
 
       case 'robot8':  
-        setRobotFormation(8, message.robot3);
-        vscode.window.showInformationMessage('Robot 8: ' + message.robot3);
+        setRobotFormation(8, message.robot8);
+        vscode.window.showInformationMessage('Robot 8: ' + message.robot8);
         break;
 
       case 'requestCurrentRobotFormation':
@@ -373,10 +375,12 @@ function getCurrentRobotFormation() {
 }
 
 function setRobotFormation(robotNumber, ip_name) {
+  outputChannel.appendLine(`Setting robot ${robotNumber} - ${ip_name}`);
   let repositoryPath = getRepositoryPath();
   if (!repositoryPath) return;
 
   robotFormation[`robot${robotNumber}`] = {number: robotNumber, ip: ip_name.split('-')[0], name: ip_name.split('-')[1], command: ip_name};
+  outputChannel.appendLine(`Robot ${robotNumber} - ${ip_name}`);
 
   let filePath = path.join(repositoryPath, 'SPQRTools/robotFormation.conf');
   const [newIp, newName] = ip_name.split('-');
