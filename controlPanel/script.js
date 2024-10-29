@@ -1,5 +1,6 @@
 const vscode = acquireVsCodeApi();
 
+
 window.addEventListener('message', event => {
   const message = event.data;
   switch (message.command) {
@@ -13,7 +14,7 @@ window.addEventListener('message', event => {
       document.getElementById('networkMenu').value = message.network;
       document.getElementById('colorMenu').value = message.color;
       document.getElementById('volumeMenu').value = message.volume;
-      document.getElementById('restartBHumanSwitch').checked = message.restartBHuman === "true";
+      document.getElementById('setprofileMenu').checked = message.setprofile;
       document.getElementById('deleteLogsSwitch').checked = message.deleteLogs === "true";
       break;
 
@@ -77,11 +78,13 @@ document.getElementById('volumeMenu').addEventListener('change', function() {
   });
 });
 
-document.getElementById('restartBHumanSwitch').addEventListener('change', function() {
-  const restartBHuman = document.getElementById('restartBHumanSwitch').checked;
+document.getElementById('setprofileMenu').addEventListener('change', function() {
+  const setprofile = document.getElementById('setprofileMenu').value;
+
+
   vscode.postMessage({
-    command: 'restartBHuman',
-    restartBHuman: restartBHuman
+    command: 'setprofile',
+    setprofile: setprofile
   });
 });
 

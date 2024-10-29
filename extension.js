@@ -31,7 +31,7 @@ let deploySettings = {
   network: '',
   color: '',
   volume: '',
-  restartBHuman: '',
+  setprofile: '',
   deleteLogs: ''
 };
 
@@ -139,9 +139,17 @@ function openControlPanel(context) {
         vscode.window.showInformationMessage('Deploy setting updated: volume = ' + message.volume);
         break;
 
-      case 'restartBHuman':
-        setCurrentDeploySettings('-b', message.restartBHuman);
-        vscode.window.showInformationMessage('Deploy setting updated: restart B-Human = ' + message.restartBHuman);
+      case 'setprofile':
+        if (message.setprofile === 'Custom') {
+          vscode.window.showInputBox({ prompt: 'Enter the setprofile value' }).then(value => {
+            setCurrentDeploySettings('-w', value);
+            vscode.window.showInformationMessage('Deploy setting updated: setprofile = ' + value);
+          });
+        }
+        else{
+          setCurrentDeploySettings('-w', message.setprofile);
+          vscode.window.showInformationMessage('Deploy setting updated: setprofile = ' + message.setprofile);
+        }
         break;
         
       case 'deleteLogs':
@@ -157,7 +165,7 @@ function openControlPanel(context) {
           network: deploySettings.network,
           color: deploySettings.color,
           volume: deploySettings.volume,
-          restartBHuman: deploySettings.restartBHuman,
+          setprofile: deploySettings.setprofile,
           deleteLogs: deploySettings.deleteLogs
         });
         break;
@@ -228,7 +236,7 @@ function openControlPanel(context) {
       network: deploySettings.network,
       color: deploySettings.color,
       volume: deploySettings.volume,
-      restartBHuman: deploySettings.restartBHuman,
+      setprofile: deploySettings.setprofile,
       deleteLogs: deploySettings.deleteLogs
     });
   
@@ -323,7 +331,7 @@ function getCurrentDeploySettings(message) {
     if (parameter === 'network') parameterName = 'network';
     if (parameter === '-c') parameterName = 'color';
     if (parameter === '-v') parameterName = 'volume';
-    if (parameter === '-b') parameterName = 'restartBHuman';
+    if (parameter === '-w') parameterName = 'setprofile';
     if (parameter === '-d') parameterName = 'deleteLogs';
     deploySettings[parameterName] = value;
   });
@@ -337,7 +345,7 @@ function setCurrentDeploySettings(param, newValue) {
   if (param === 'network') deploySettings.network = newValue;
   if (param === '-c') deploySettings.color = newValue;
   if (param === '-v') deploySettings.volume = newValue;
-  if (param === '-b') deploySettings.restartBHuman = newValue ? 'true' : 'false';
+  if (param === '-w') deploySettings.setprofile = newValue;
   if (param === '-d') deploySettings.deleteLogs = newValue ? 'true' : 'false';
 
   let filePath = path.join(repositoryPath, 'SPQRTools/deploySettings.conf');
@@ -439,8 +447,7 @@ function deploy(number=null) {
   else{
     let robot = robotFormation[`robot${number}`];
     let ip = deploySettings.network === 'Ethernet' ? '192.168.19.'+robot.ip : '10.0.19.'+robot.ip;
-    let deployCommand = `spqr deploy ${deploySettings.mode} -r ${robot.number} ${ip} -c ${deploySettings.color} -v ${deploySettings.volume}`;
-    if (deploySettings.restartBHuman === 'true') deployCommand += ' -b';
+    let deployCommand = `spqr deploy ${deploySettings.mode} -r ${robot.number} ${ip} -c ${deploySettings.color} -v ${deploySettings.volume} -w ${deploySettings.setprofile}`;
     if (deploySettings.deleteLogs === 'true') deployCommand += ' -d';
     vscode.window.showInformationMessage(`Deploying robot ${robot.number} - ${robot.command}`);
     terminal.sendText(deployCommand);
