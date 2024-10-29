@@ -5,6 +5,10 @@
   "icon": "media/SPQRlogo.png",
   "version": "0.0.7",
   "publisher": "SPQR",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SPQRTeam/SPQR-VSCode-Extension" 
+  },
   "engines": {
     "vscode": "^1.93.0"
   },
