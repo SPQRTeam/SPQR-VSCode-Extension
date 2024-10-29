@@ -454,7 +454,7 @@ function deploy(number=null) {
   else{
     let robot = robotFormation[`robot${number}`];
     let ip = deploySettings.network === 'Ethernet' ? '192.168.19.'+robot.ip : '10.0.19.'+robot.ip;
-    let deployCommand = `spqr deploy ${deploySettings.mode} -r ${robot.number} ${ip} -c ${deploySettings.color} -v ${deploySettings.volume} -w ${deploySettings.setprofile}`;
+    let deployCommand = `spqr deploy ${deploySettings.mode} -r ${robot.number} ${ip} -c ${deploySettings.color} -v ${deploySettings.volume} -w ${deploySettings.setprofile} -b`;
     if (deploySettings.deleteLogs === 'true') deployCommand += ' -d';
     vscode.window.showInformationMessage(`Deploying robot ${robot.number} - ${robot.command}`);
     terminal.sendText(deployCommand);
