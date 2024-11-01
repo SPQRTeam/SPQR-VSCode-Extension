@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPQR Meta Generator</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body>  
+  <div>
+    <img src="http://www.diag.uniroma1.it/~spqr/images/logo-spqr-robot-soccer-team.png" alt="SPQR Logo" style="height: 120px;">
+    <h1 style="font-size: 40px; margin-left: 15px">SPQR Meta Generator</h1>
+  </div>
+
+  <hr style="height: 5px; background-color: #333; border: none;">
+
+  <!-- create a table with two columns and one row-->
+
+  <table style="width: 100%">
+    
+    <tr class="table-row-header">
+    
+      <!-- Compile -->
+      <td class="table-column-header" style="width: 50%">
+        <h2>Module Generator</h2>
+        <table>
+          <table>
+            <!--Name-->
+            <tr class="table-row"></tr>
+              <td class="table-column">
+                <strong><label for="name">Name:</label></strong>
+              </td>
+              <td class="table-column">
+                <input type="text" id="moduleName" name="moduleName" class="styled-input" placeholder="module name">
+              </td>
+              <td class="table-column">
+                <!-- <button id="addModuleButton" class="styled-button">Add Module</button> -->
+              </td>
+            </tr>
+        
+            <!--Category-->
+            <tr class="table-row">
+              <td class="table-column">
+                <strong><label for="moduleCategory">Category:</label></strong>
+              </td>
+              <td class="table-column">
+                <select id="moduleCategoryMenu" name="moduleCategory" class="selector">
+                  <option value="perception" selected>perception</option>
+                  <option value="other">other</option>
+                </select>
+              </td>
+              <td class="table-column">
+                <!-- <button id="addCategoryButton" class="styled-button">Add Category</button> -->
+              </td>
+            </tr>
+          
+            <!--Path-->
+            <tr class="table-row">
+              <td class="table-column">
+                <strong><label for="modulePath">Module Path:</label></strong>
+              </td>
+              <td class="table-column">
+                <input type="text" id="modulePath" name="modulePath" class="styled-input" placeholder="/path/to/module">
+              </td>
+              <td class="table-column">
+                <!-- <button id="addModuleButton" class="styled-button">Add Module</button> -->
+              </td>
+            </tr>
+        
+            <!--Requires-->
+            <tr class="table-row">
+              <td class="table-column">
+                <strong><label for="Requires">Requires:</label></strong>
+              </td>
+              <td class="table-column">
+                <input type="text" id="requiresName" name="requiresName" class="styled-input" placeholder="module name">
+              </td>
+              <td class="table-column">
+                <button id="addRequiresButton" class="styled-button">Add Requires</button>
+              </td>
+            </tr>
+
+            <!--Uses-->
+            <tr class="table-row">
+              <td class="table-column">
+                <strong><label for="Uses">Uses:</label></strong>
+              </td>
+              <td class="table-column">
+                <input type="text" id="usesName" name="usesName" class="styled-input" placeholder="module name">
+              </td>
+              <td class="table-column">
+                <button id="addUsesButton" class="styled-button">Add Uses</button>
+              </td>
+            </tr>
+
+            <!--Provides-->
+            <tr class="table-row">
+              <td class="table-column">
+                <strong><label for="Provides">Provides:</label></strong>
+              </td>
+              <td class="table-column">
+                <input type="text" id="providesName" name="providesName" class="styled-input" placeholder="module name">
+              </td>
+              <td class="table-column">
+                <button id="addProvidesButton" class="styled-button">Add Provides</button>
+              </td>
+            </tr>
+
+            
+            <!--Param Type-->
+            <tr class="table-row">
+              <td class="table-column">
+                <strong>Parameters Type:</strong>
+              </td>
+              <td class="table-column">
+                <select id="parametersType" name="parametersType" class="selector">
+                  <option value="DEFINE_PARAM" selected>DEFINE_PARAM</option>
+                  <option value="LOAD_PARAM">LOAD_PARAM</option>
+                </select>
+              </td>
+              <td class="table-column">
+                <!-- <button id="addParameterButton" class="styled-button">Add Parameter</button> -->
+              </td>
+            </tr>
+
+            <tr class="table-row">
+              <td class="table-column">
+                <strong>Parameters .cfg path:</strong>
+              </td>
+              <td class="table-column">
+                <input type="text" id="parametersCfgPath" name="parametersCfgPath" class="styled-input" placeholder="path/to/cfg">
+              </td>
+              <td class="table-column">
+                <!-- <button id="addParameterButton" class="styled-button">Add Parameter</button> -->
+              </td>
+            </tr>
+        
+            <!--Params-->
+            <tr class="table-row">
+              <td class="table-column">
+                <strong>Parameters:</strong>
+              </td>
+              <td class="table-column">
+                <table>
+                    <tr>
+                        <td>Type</td>
+                        <td><input type="text" id="parameterType" name="parameterType" class="styled-input" placeholder="parameter type"></td>
+                    </tr>
+                    <tr>
+                        <td>Value</td>
+                        <td><input type="text" id="parameterValue" name="parameterValue" class="styled-input" placeholder="parameter value"></td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" id="parameterName" name="parameterName" class="styled-input" placeholder="parameter name"></td>
+                    </tr>
+                </table>
+              </td>
+              <td class="table-column">
+                <button id="addParameterButton" class="styled-button">Add Parameter</button>
+              </td>
+            </tr>
+        </table>
+      </td>
+
+    
+
+      <!-- Representation -->
+      <td class="table-column-header" style="width: 50%">
+        <h2>Representation Generator</h2>
+        <table>
+
+          <table>
+            <!--Name-->
+            <tr class="table-row"></tr>
+              <td class="table-column">
+                <strong><label for="name">Name:</label></strong>
+              </td>
+              <td class="table-column">
+                <input type="text" id="represenationName" name="represenationName" class="styled-input" placeholder="represenation name">
+              </td>
+              <td class="table-column">
+                <!-- <button id="addRepresenationButton" class="styled-button">Add Represenation</button> -->
+              </td>
+            </tr>
+        
+      
+            <!--Path-->
+            <tr class="table-row">
+              <td class="table-column">
+                <strong><label for="represenationPath">Representation Path:</label></strong>
+              </td>
+              <td class="table-column">
+                <input type="text" id="represenationPath" name="represenationPath" class="styled-input" placeholder="/path/to/module">
+              </td>
+              <td class="table-column">
+                <!-- <button id="addRepresenationButton" class="styled-button">Add Represenation</button> -->
+              </td>
+            </tr>
+        
+       
+            <!--Attributes-->
+            <tr class="table-row">
+              <td class="table-column">
+                <strong>Attributes:</strong>
+              </td>
+              <td class="table-column">
+                <table>
+                    <tr>
+                        <td>Type</td>
+                        <td><input type="text" id="attributeType" name="attributeType" class="styled-input" placeholder="attribute type"></td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" id="attributeName" name="attributeName" class="styled-input" placeholder="attribute name"></td>
+                    </tr>
+                    <tr>
+                        <td>Default Value</td>
+                        <td><input type="text" id="attributeDefault" name="attributeDefault" class="styled-input" placeholder="attribute default"></td>
+                    </tr>
+                </table>
+              </td>
+              <td class="table-column">
+                <button id="addAttributeButton" class="styled-button">Add Attribute</button>
+              </td>
+            </tr>
+
+        </table>
+        
+        <hr style="height: 5px; background-color: #333; border: none;">
+        <h2>Category and Scenarios</h2>
+
+        <table>
+
+            <tr class="table-row">
+              <td class="table-column">
+                <strong>Category:</strong>
+              </td>
+
+              <td class="table-column">
+                <select id="category" name="category" class="selector">
+                  <option value="Cognition" selected>Cognition</option>
+                  <option value="Other">Other</option>
+                </select>
+              </td>
+
+              <td class="table-column">
+              </td>
+            </tr>
+
+            <tr class="table-row">
+              <td class="table-column">
+                <strong>Scenarios:</strong>
+              </td>
+
+              <td class="table-column">
+                <select id="scenarios" name="scenarios" class="selector">
+                  <option value="Default" selected>Default</option>
+                  <option value="Other">Other</option>
+                </select>
+              </td>
+
+              <td class="table-column">
+              </td>
+            </tr>
+        </table>
+
+        <hr style="height: 5px; background-color: #333; border: none;">
+
+        <table>
+            <tr class="table-row">
+              <td class="table-column">
+                <button id="generateButton" class="styled-button">Generate</button>
+              </td>
+            </tr>
+        </table>
+          
+
+      </td>
+    
+    </tr>
+  </table>
+
+</body>
+</html>

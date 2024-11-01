@@ -61,6 +61,12 @@ function activate(context) {
   });
   context.subscriptions.push(wikiPanelCommand);
 
+  //* Register meta generator panel command
+  const metaGeneratorPanelCommand = vscode.commands.registerCommand('SPQR.metaGeneratorPanel', function () {
+    openMetaGeneratorPanel(context);
+  });
+  context.subscriptions.push(metaGeneratorPanelCommand);
+
   //* Clear Terminal Command
   const clearTerminalCommand = vscode.commands.registerCommand('SPQR.clearTerminal', function () { clearTerminal(); });
 
@@ -272,6 +278,26 @@ function openWikiPanel(context) {
   );
 
   panel.webview.html = getWebviewContent('wikiPanel');
+
+  panel.webview.onDidReceiveMessage(async message => {  
+    switch (message.command) {  
+      default:
+        break;
+    }  
+  });
+
+}
+
+//* Meta Generator Panel
+function openMetaGeneratorPanel(context) {
+  const panel = vscode.window.createWebviewPanel(
+    'SPQRMetaGeneratorPanel',
+    'SPQR Meta Generator',
+    vscode.ViewColumn.One,
+    { enableScripts: true }
+  );
+
+  panel.webview.html = getWebviewContent('metaGeneratorPanel');
 
   panel.webview.onDidReceiveMessage(async message => {  
     switch (message.command) {  
@@ -623,6 +649,7 @@ class CommandProvider {
     return Promise.resolve([
       { label: 'Open Control Panel', command: 'SPQR.controlPanel', icon: 'gear' },
       { label: 'Open Wiki Panel', command:'SPQR.wikiPanel', icon: 'book'},
+      { label: 'Open Meta Generator Panel', command:'SPQR.metaGeneratorPanel', icon: 'code'},
       { label: 'Clear Terminal', command: 'SPQR.clearTerminal', icon: 'clear-all' },
       { label: 'Compile', command: 'SPQR.compile', icon: 'tools' },
       { label: 'Deploy', submenu: getDeployMenu()},

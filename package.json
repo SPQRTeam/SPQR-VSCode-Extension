@@ -128,6 +128,10 @@
         "title": "Open SPQR Wiki Panel"
       },
       {
+        "command": "SPQR.metaGeneratorPanel",
+        "title": "Open SPQR Meta Generator Panel"
+      },
+      {
         "command": "SPQR.SimRobot",
         "title": "Run SimRobot"
       },
